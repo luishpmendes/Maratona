@@ -30,8 +30,8 @@ void bfs(matrix W, int s, vector<int> * pi, vector<int> * d) {
     vector<int> color (W.size(), WHITE);
     queue<int> Q;
 
-    (*d) = vector<int> (W.size(), INFINITE);
     (*pi) = vector<int> (W.size(), NIL);
+    (*d) = vector<int> (W.size(), INFINITE);
 
     for (int u = 0; u < (int) W.size(); u++) {
         color[u] = WHITE;
