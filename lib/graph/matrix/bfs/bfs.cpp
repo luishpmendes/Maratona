@@ -3,11 +3,11 @@
 #include <vector>
 
 #ifndef INFINITE
-#define INFINITE 15 << 24
+#define INFINITE 15 << 25
 #endif
 
 #ifndef NIL
-#define NIL - 15 << 24
+#define NIL - 15 << 25
 #endif
 
 #ifndef WHITE
@@ -27,13 +27,16 @@ using namespace std;
 typedef vector< vector<int> > matrix;
 
 void bfs(matrix W, int s, vector<int> * pi, vector<int> * d) {
-    vector<int> color;
+    vector<int> color (W.size(), WHITE);
     queue<int> Q;
 
-    for (unsigned int u = 0; u < W.size(); u++) {
-        color.push_back(WHITE);
-        (*d).push_back(INFINITE);
-        (*pi).push_back(NIL);
+    (*d) = vector<int> (W.size(), INFINITE);
+    (*pi) = vector<int> (W.size(), NIL);
+
+    for (int u = 0; u < (int) W.size(); u++) {
+        color[u] = WHITE;
+        (*d)[u] = INFINITE;
+        (*pi)[u] = NIL;
     }
 
     color[s] = GRAY;
@@ -70,6 +73,7 @@ int main () {
             int u, v;
             cin >> u >> v;
             W[u][v] = 1;
+            W[v][u] = 1;
         }
         cin >> s;
         bfs(W, s, &pi, &d);
