@@ -25,12 +25,7 @@
 
 using namespace std;
 
-typedef struct {
-    int v; /* vertex destination */
-    int w; /* edge weight */
-} node;
-
-void bfs(vector< list <node> > adj, int s, vector<int> * pi, vector<int> * d) {
+void bfs(vector< list < pair <int, double> > > adj, int s, vector<int> * pi, vector<int> * d) {
     vector<int> color (adj.size(), WHITE);
     queue<int> Q;
 
@@ -53,8 +48,8 @@ void bfs(vector< list <node> > adj, int s, vector<int> * pi, vector<int> * d) {
         int u = Q.front();
         Q.pop();
 
-        for (list<node>::iterator it = adj[u].begin(); it != adj[u].end(); ++it) {
-            int v = (*it).v;
+        for (list< pair <int, double> >::iterator it = adj[u].begin(); it != adj[u].end(); ++it) {
+            int v = (*it).first;
             if (color[v] == WHITE) {
                 color[v] = GRAY;
                 (*d)[v] = (*d)[u]+1;
@@ -69,15 +64,15 @@ void bfs(vector< list <node> > adj, int s, vector<int> * pi, vector<int> * d) {
 int main () {
     int n, m;
     while (cin >> n >> m) {
-        vector< list <node> > adj (n);
+        vector< list < pair <int, double> > > adj (n);
         int s;
         vector<int> pi;
         vector<int> d;
         for (int i = 0; i < m; i++) {
             int u, v;
             cin >> u >> v;
-            adj[u].push_back((node) {v, 1});
-            adj[v].push_back((node) {u, 1});
+            adj[u].push_back(make_pair(v, 1));
+            adj[v].push_back(make_pair(u, 1));
         }
         cin >> s;
         bfs(adj, s, &pi, &d);
