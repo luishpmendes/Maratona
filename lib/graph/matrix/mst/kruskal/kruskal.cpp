@@ -13,18 +13,6 @@
 #define NIL - (15 << 25)
 #endif
 
-#ifndef WHITE
-#define WHITE 0
-#endif
-
-#ifndef GRAY
-#define GRAY  1
-#endif
-
-#ifndef BLACK
-#define BLACK 2
-#endif
-
 using namespace std;
 
 typedef vector< vector<double> > matrix;
