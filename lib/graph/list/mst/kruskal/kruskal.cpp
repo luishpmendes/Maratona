@@ -2,27 +2,10 @@
 #include <iostream>
 #include <list>
 #include <map>
-#include <queue>
 #include <vector>
 
-#ifndef INFINITE
-#define INFINITE 15 << 25
-#endif
-
 #ifndef NIL
-#define NIL - 15 << 25
-#endif
-
-#ifndef WHITE
-#define WHITE 0
-#endif
-
-#ifndef GRAY
-#define GRAY  1
-#endif
-
-#ifndef BLACK
-#define BLACK 2
+#define NIL - (15 << 25)
 #endif
 
 using namespace std;
