@@ -24,7 +24,7 @@
 
 using namespace std;
 
-typedef vector< vector<int> > matrix;
+typedef vector< vector<double> > matrix;
 
 void bfs(matrix W, int s, vector<int> * pi, vector<int> * d) {
     vector<int> color (W.size(), WHITE);
@@ -65,7 +65,7 @@ void bfs(matrix W, int s, vector<int> * pi, vector<int> * d) {
 int main () {
     int n, m;
     while (cin >> n >> m) {
-        matrix W (n, vector<int>(n, INFINITE));
+        matrix W (n, vector<double>(n, INFINITE));
         int s;
         vector<int> pi;
         vector<int> d;
