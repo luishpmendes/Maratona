@@ -1,8 +1,6 @@
 #include <algorithm>
 #include <iostream>
-#include <list>
 #include <map>
-#include <queue>
 #include <vector>
 
 #ifndef INFINITE
