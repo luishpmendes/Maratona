@@ -23,7 +23,7 @@
 
 using namespace std;
 
-typedef vector< vector<int> > matrix;
+typedef vector< vector<double> > matrix;
 
 void dfsVisit(matrix W, int u, int * time, vector<int> * color, vector<int> * pi, vector<int> * d, vector<int> * f) {
     (*time)++;
@@ -72,7 +72,7 @@ void dfs(matrix W, vector<int> * pi, vector<int> * d, vector<int> * f) {
 int main () {
     int n, m;
     while (cin >> n >> m) {
-        matrix W (n, vector<int>(n, INFINITE));
+        matrix W (n, vector<double>(n, INFINITE));
         vector<int> pi;
         vector<int> d;
         vector<int> f;
