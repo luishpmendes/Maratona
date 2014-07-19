@@ -6,7 +6,7 @@
 #endif
 
 #ifndef NIL
-#define NIL - 15 << 25
+#define NIL - (15 << 25)
 #endif
 
 #ifndef WHITE
