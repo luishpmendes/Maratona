@@ -56,7 +56,7 @@ vector<Edge> prim(matrix W, int r) {
             Edge e;
             e.u = pi[u];
             e.v = u;
-            e.w = W[e.u][e.v];
+            e.w = key[u];
             result.push_back(e);
         }
     }
