@@ -18,7 +18,7 @@ typedef struct {
     double w; /* edge weight */
 } Edge;
 
-vector<Edge> prim(vector< list < pair <int, double> > > adj, int r) {
+vector<Edge> prim (vector< list < pair <int, double> > > adj, int r) {
     vector<Edge> result;
     vector<bool> Q (adj.size(), true);
     vector<int> key (adj.size(), INFINITE);
