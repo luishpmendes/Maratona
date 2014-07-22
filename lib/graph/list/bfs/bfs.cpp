@@ -25,7 +25,7 @@
 
 using namespace std;
 
-void bfs(vector< list < pair <int, double> > > adj, int s, vector<int> * pi, vector<int> * d) {
+void bfs (vector< list < pair <int, double> > > adj, int s, vector<int> * pi, vector<int> * d) {
     vector<int> color (adj.size(), WHITE);
     queue<int> Q;
 
