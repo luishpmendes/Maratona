@@ -26,7 +26,7 @@ struct Sets {
     vector<int> rank;
 };
 
-void SETSinit(Sets * S, int n) {
+void SETSinit (Sets * S, int n) {
     S->p = vector<int> (n, NIL);
     S->rank = vector<int> (n, NIL);
 
@@ -36,7 +36,7 @@ void SETSinit(Sets * S, int n) {
     }
 }
 
-void SETSdestroy(Sets * S) {
+void SETSdestroy (Sets * S) {
     for (int i = 0; i < (int) S->rank.size(); i++) {
         S->rank[i] = NIL;
     }
@@ -45,19 +45,19 @@ void SETSdestroy(Sets * S) {
     }
 }
 
-void SETSmake(Sets * S, int x) {
+void SETSmake (Sets * S, int x) {
     S->p[x] = x;
     S->rank[x] = 0;
 }
 
-int SETSfind(Sets * S, int x) {
+int SETSfind (Sets * S, int x) {
     if (x != S->p[x]) {
         S->p[x] = SETSfind(S, S->p[x]);
     }
     return S->p[x];
 }
 
-void SETSlink(Sets * S, int x, int y) {
+void SETSlink (Sets * S, int x, int y) {
     if (x != y) {
         if (S->rank[x] > S->rank[y]) {
             S->p[y] = x;
@@ -70,11 +70,11 @@ void SETSlink(Sets * S, int x, int y) {
     }
 }
 
-void SETSunion(Sets * S, int x, int y) {
+void SETSunion (Sets * S, int x, int y) {
     SETSlink(S, SETSfind(S, x), SETSfind(S, y));
 }
 
-vector<Edge> minEdges(matrix W) {
+vector<Edge> minEdges (matrix W) {
     vector<Edge> result;
     map<pair<int, int>, double> M;
 
@@ -110,7 +110,7 @@ bool comparator (Edge a, Edge b) {
     return (a.w < b.w);
 }
 
-vector<Edge> kruskal(matrix W) {
+vector<Edge> kruskal (matrix W) {
     vector<Edge> A; /* A ← ∅ */
     Sets S;
 
