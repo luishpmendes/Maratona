@@ -2,14 +2,6 @@
 #include <iostream>
 #include <vector>
 
-#ifndef INFINITE
-#define INFINITE 15 << 25
-#endif
-
-#ifndef NIL
-#define NIL - (15 << 25)
-#endif
-
 #ifndef WHITE
 #define WHITE 0
 #endif
@@ -24,7 +16,7 @@
 
 using namespace std;
 
-void dfsVisit(vector< list < pair <int, double> > > adj, int u, vector<int> * color, list<int> * l) {
+void dfsVisit (vector< list < pair <int, double> > > adj, int u, vector<int> * color, list<int> * l) {
     (*color)[u] = GRAY;
 
     for (list< pair <int, double> >::iterator it = adj[u].begin(); it != adj[u].end(); ++it) {
@@ -39,22 +31,21 @@ void dfsVisit(vector< list < pair <int, double> > > adj, int u, vector<int> * co
 }
 
 list<int> dfs (vector< list < pair <int, double> > > adj) {
+    list<int> result;
     vector<int> color (adj.size(), WHITE);
-    list<int> l;
 
     for (int u = 0; u < (int) adj.size(); u++) {
         if (color[u] == WHITE) {
-            dfsVisit(adj, u, &color, &l);
+            dfsVisit(adj, u, &color, &result);
         }
     }
 
-    return l;
+    return result;
 }
 
 vector<int> topologicalSort (vector< list < pair <int, double> > > adj) {
     list<int> l = dfs (adj);
     return vector<int> (l.begin(), l.end());
-    
 }
 
 int main () {
