@@ -26,7 +26,7 @@ using namespace std;
 
 typedef vector< vector<double> > matrix;
 
-void bfs(matrix W, int s, vector<int> * pi, vector<int> * d) {
+void bfs (matrix W, int s, vector<int> * pi, vector<int> * d) {
     vector<int> color (W.size(), WHITE);
     queue<int> Q;
 
