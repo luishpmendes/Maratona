@@ -19,7 +19,7 @@ typedef struct {
     double w; /* edge weight */
 } Edge;
 
-vector<Edge> prim(matrix W, int r) {
+vector<Edge> prim (matrix W, int r) {
     vector<Edge> result;
     vector<bool> Q (W.size(), true);
     vector<int> key (W.size(), INFINITE);
