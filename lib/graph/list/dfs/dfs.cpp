@@ -24,7 +24,7 @@
 
 using namespace std;
 
-void dfsVisit(vector< list < pair <int, double> > > adj, int u, int * time, vector<int> * color, vector<int> * pi, vector<int> * d, vector<int> * f) {
+void dfsVisit (vector< list < pair <int, double> > > adj, int u, int * time, vector<int> * color, vector<int> * pi, vector<int> * d, vector<int> * f) {
     (*time)++;
     (*d)[u] = (*time);
 
@@ -43,7 +43,7 @@ void dfsVisit(vector< list < pair <int, double> > > adj, int u, int * time, vect
     (*f)[u] = (*time);
 }
 
-void dfs(vector< list < pair <int, double> > > adj, vector<int> * pi, vector<int> * d, vector<int> * f) {
+void dfs (vector< list < pair <int, double> > > adj, vector<int> * pi, vector<int> * d, vector<int> * f) {
     vector<int> color (adj.size(), WHITE);
     int time;
 
