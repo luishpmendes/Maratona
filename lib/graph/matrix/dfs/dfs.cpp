@@ -25,7 +25,7 @@ using namespace std;
 
 typedef vector< vector<double> > matrix;
 
-void dfsVisit(matrix W, int u, int * time, vector<int> * color, vector<int> * pi, vector<int> * d, vector<int> * f) {
+void dfsVisit (matrix W, int u, int * time, vector<int> * color, vector<int> * pi, vector<int> * d, vector<int> * f) {
     (*time)++;
     (*d)[u] = (*time);
 
@@ -45,7 +45,7 @@ void dfsVisit(matrix W, int u, int * time, vector<int> * color, vector<int> * pi
     (*f)[u] = (*time);
 }
 
-void dfs(matrix W, vector<int> * pi, vector<int> * d, vector<int> * f) {
+void dfs (matrix W, vector<int> * pi, vector<int> * d, vector<int> * f) {
     vector<int> color (W.size(), WHITE);
     int time;
 
