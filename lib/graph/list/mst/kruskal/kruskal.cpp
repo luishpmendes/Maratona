@@ -47,7 +47,7 @@ void SETSmake (Sets * S, int x) {
 
 int SETSfind (Sets * S, int x) {
     if (x != S->p[x]) {
-        S->p[x] = SETSfind(S, S->p[x]);
+        S->p[x] = SETSfind (S, S->p[x]);
     }
     return S->p[x];
 }
@@ -66,7 +66,7 @@ void SETSlink (Sets * S, int x, int y) {
 }
 
 void SETSunion (Sets * S, int x, int y) {
-    SETSlink(S, SETSfind(S, x), SETSfind(S, y));
+    SETSlink(S, SETSfind (S, x), SETSfind (S, y));
 }
 
 vector <Edge> minEdges (vector < list < pair <int, double> > > adj) {
@@ -95,6 +95,7 @@ vector <Edge> minEdges (vector < list < pair <int, double> > > adj) {
         e.u = ((*it).first).first;
         e.v = ((*it).first).second;
         e.w = (*it).second;
+        //result.insert(e);
         result.push_back(e);
     }
 
@@ -117,13 +118,13 @@ vector <Edge> kruskal (vector < list < pair <int, double> > > adj) {
     }
 
     /* sort the edges of E into nondecreasing order by weight w */
-    vector <Edge> E = minEdges(adj);
+    vector <Edge> E = minEdges (adj);
 
     sort(E.begin(), E.end(), comparator);
 
     /* for each edge (u, v) ∈ E, taken in nondecreasing order by weight */
-    for (vector <Edge>::iterator it = E.begin(); it != E.end(); ++it) {
-        Edge e = *it;
+    for (int i = 0; i < (int) E.size(); i++) {
+        Edge e = E[i];
         if (SETSfind (&S, e.u) != SETSfind (&S, e.v)) {
             A.push_back(e);
             SETSunion (&S, e.u, e.v);
@@ -147,8 +148,8 @@ int main () {
             adj[v].push_back(make_pair(u, w));
         }
         vector <Edge> A = kruskal (adj);
-        for (vector <Edge>::iterator it = A.begin(); it != A.end(); ++it) {
-            Edge e = *it;
+        for (int i = 0; i < (int) A.size(); i++) {
+            Edge e = A[i];
             cout << e.u << " " << e.v << " " << e.w << endl;
         }
     }
