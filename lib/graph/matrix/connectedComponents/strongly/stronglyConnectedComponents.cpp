@@ -23,7 +23,7 @@ using namespace std;
 
 typedef vector < vector <double> > matrix;
 
-void dfsVisit (matrix W, int u, vector<int> * color, list<int> * l) {
+void dfsVisit (matrix W, int u, vector <int> * color, list <int> * l) {
     (*color)[u] = GRAY;
 
     for (int v = 0; v < (int) W.size(); v++) {
@@ -38,9 +38,9 @@ void dfsVisit (matrix W, int u, vector<int> * color, list<int> * l) {
     (*l).push_front(u);
 }
 
-list<int> dfs (matrix W) {
-    list<int> result;
-    vector<int> color (W.size(), WHITE);
+list <int> dfs (matrix W) {
+    list <int> result;
+    vector <int> color (W.size(), WHITE);
 
     for (int u = 0; u < (int) W.size(); u++) {
         if (color[u] == WHITE) {
@@ -50,9 +50,9 @@ list<int> dfs (matrix W) {
     return result;
 }
 
-vector<int> topologicalSort (matrix W) {
-    list<int> l = dfs (W);
-    return vector<int> (l.begin(), l.end());
+vector <int> topologicalSort (matrix W) {
+    list <int> l = dfs (W);
+    return vector <int> (l.begin(), l.end());
 }
 
 matrix transpose (matrix W) {
@@ -92,7 +92,7 @@ set < set <int> > dfsT (matrix W, vector <int> ts) {
     for (int i = 0; i < (int) ts.size(); i++) {
         int u = ts[i];
         if (color[u] == WHITE) {
-            result.insert (dfsTVisit (W, u, &color));
+            result.insert(dfsTVisit (W, u, &color));
         }
     }
 
@@ -108,7 +108,7 @@ set < set <int> > stronglyConnectedComponents (matrix W) {
 int main () {
     int n, m;
     while (cin >> n >> m) {
-        matrix W (n, vector<double>(n, INFINITE));
+        matrix W (n, vector <double>(n, INFINITE));
         for (int i = 0; i < m; i++) {
             int u, v;
             cin >> u >> v;
