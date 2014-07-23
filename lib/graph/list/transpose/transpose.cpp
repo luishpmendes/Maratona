@@ -8,7 +8,7 @@ vector < list < pair <int, double> > > transpose (vector < list < pair <int, dou
     vector < list < pair <int, double> > > result (adj.size());
 
     for (int u = 0; u < (int) adj.size(); u++) {
-        for (list< pair <int, double> >::iterator it = adj[u].begin(); it != adj[u].end(); ++it) {
+        for (list < pair <int, double> >::iterator it = adj[u].begin(); it != adj[u].end(); ++it) {
             int v = (*it).first;
             result[v].push_back(make_pair(u, 1));
         }
