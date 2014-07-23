@@ -62,7 +62,7 @@ vector < list < pair <int, double> > > transpose (vector < list < pair <int, dou
     return result;
 }
 
-set <int> dfsTVisit (vector < list < pair <int, double> > > adj, int u, vector<int> * color) {
+set <int> dfsTVisit (vector < list < pair <int, double> > > adj, int u, vector <int> * color) {
     set <int> result;
     (*color)[u] = GRAY;
 
