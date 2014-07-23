@@ -77,9 +77,9 @@ int main () {
         }
         int r;
         cin >> r;
-        vector <Edge> A = prim(adj, r);
-        for (vector <Edge>::iterator it = A.begin() ; it != A.end(); ++it) {
-            Edge e = *it;
+        vector <Edge> A = prim (adj, r);
+        for (int i = 0; i < (int) A.size(); i++) {
+            Edge e = A[i];
             cout << e.u << " " << e.v << " " << e.w << endl;
         }
     }
