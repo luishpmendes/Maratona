@@ -24,13 +24,13 @@ matrix transpose (matrix W) {
 int main () {
     int n, m;
     while (cin >> n >> m) {
-        matrix W (n, vector<double>(n, INFINITE));
+        matrix W (n, vector <double> (n, INFINITE));
         for (int i = 0; i < m; i++) {
             int u, v;
             cin >> u >> v;
             W[u][v] = 1;
         }
-        matrix T = transpose(W);
+        matrix T = transpose (W);
         for (int u = 0; u < n; u++) {
             for (int v = 0; v < n; v++) {
                 if (T[u][v] < INFINITE) {
