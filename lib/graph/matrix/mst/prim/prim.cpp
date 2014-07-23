@@ -11,7 +11,7 @@
 
 using namespace std;
 
-typedef vector< vector<double> > matrix;
+typedef vector < vector <double> > matrix;
 
 typedef struct {
     int u; /* edge source */
@@ -19,11 +19,11 @@ typedef struct {
     double w; /* edge weight */
 } Edge;
 
-vector<Edge> prim (matrix W, int r) {
-    vector<Edge> result;
-    vector<bool> Q (W.size(), true);
-    vector<int> key (W.size(), INFINITE);
-    vector<int> pi (W.size(), NIL);
+vector <Edge> prim (matrix W, int r) {
+    vector <Edge> result;
+    vector <bool> Q (W.size(), true);
+    vector <int> key (W.size(), INFINITE);
+    vector <int> pi (W.size(), NIL);
 
     for (int u = 0; u < (int) W.size(); u++) {
         Q[u] = true;
@@ -67,7 +67,7 @@ vector<Edge> prim (matrix W, int r) {
 int main () {
     int n, m;
     while (cin >> n >> m) {
-        matrix W (n, vector<double>(n, INFINITE));
+        matrix W (n, vector <double>(n, INFINITE));
         for (int i = 0; i < m; i++) {
             int u, v;
             double w;
@@ -77,8 +77,8 @@ int main () {
         }
         int r;
         cin >> r;
-        vector<Edge> A = prim(W, r);
-        for (vector<Edge>::iterator it = A.begin() ; it != A.end(); ++it) {
+        vector <Edge> A = prim(W, r);
+        for (vector <Edge>::iterator it = A.begin() ; it != A.end(); ++it) {
             Edge e = *it;
             cout << e.u << " " << e.v << " " << e.w << endl;
         }
