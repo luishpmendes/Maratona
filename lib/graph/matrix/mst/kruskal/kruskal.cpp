@@ -13,7 +13,7 @@
 
 using namespace std;
 
-typedef vector < vector<double> > matrix;
+typedef vector < vector <double> > matrix;
 
 typedef struct {
     int u; /* edge source */
@@ -52,7 +52,7 @@ void SETSmake (Sets * S, int x) {
 
 int SETSfind (Sets * S, int x) {
     if (x != S->p[x]) {
-        S->p[x] = SETSfind(S, S->p[x]);
+        S->p[x] = SETSfind (S, S->p[x]);
     }
     return S->p[x];
 }
@@ -71,7 +71,7 @@ void SETSlink (Sets * S, int x, int y) {
 }
 
 void SETSunion (Sets * S, int x, int y) {
-    SETSlink(S, SETSfind(S, x), SETSfind(S, y));
+    SETSlink(S, SETSfind (S, x), SETSfind (S, y));
 }
 
 vector<Edge> minEdges (matrix W) {
@@ -129,7 +129,7 @@ vector <Edge> kruskal (matrix W) {
     /* for each edge (u, v) ∈ E, taken in nondecreasing order by weight */
     for (vector <Edge>::iterator it = E.begin(); it != E.end(); ++it) {
         Edge e = *it;
-        if (SETSfind(&S, e.u) != SETSfind(&S, e.v)) {
+        if (SETSfind (&S, e.u) != SETSfind (&S, e.v)) {
             A.push_back(e);
             SETSunion (&S, e.u, e.v);
         }
@@ -143,7 +143,7 @@ vector <Edge> kruskal (matrix W) {
 int main () {
     int n, m;
     while (cin >> n >> m) {
-        matrix W (n, vector <double>(n, INFINITE));
+        matrix W (n, vector <double> (n, INFINITE));
         for (int i = 0; i < m; i++) {
             int u, v;
             double w;
@@ -151,7 +151,7 @@ int main () {
             W[u][v] = w;
             W[v][u] = w;
         }
-        vector <Edge> A = kruskal(W);
+        vector <Edge> A = kruskal (W);
         for (vector <Edge>::iterator it = A.begin() ; it != A.end(); ++it) {
             Edge e = *it;
             cout << e.u << " " << e.v << " " << e.w << endl;
