@@ -66,7 +66,7 @@ void SETSlink (Sets * S, int x, int y) {
 }
 
 void SETSunion (Sets * S, int x, int y) {
-    SETSlink(S, SETSfind (S, x), SETSfind (S, y));
+    SETSlink (S, SETSfind (S, x), SETSfind (S, y));
 }
 
 vector <Edge> minEdges (vector < list < pair <int, double> > > adj) {
@@ -95,7 +95,6 @@ vector <Edge> minEdges (vector < list < pair <int, double> > > adj) {
         e.u = ((*it).first).first;
         e.v = ((*it).first).second;
         e.w = (*it).second;
-        //result.insert(e);
         result.push_back(e);
     }
 
