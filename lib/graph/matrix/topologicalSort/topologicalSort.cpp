@@ -28,7 +28,7 @@ void dfsVisit (matrix W, int u, vector <int> * color, list <int> * l) {
     for (int v = 0; v < (int) W.size(); v++) {
         if (u != v && W[u][v] < INFINITE) {
             if ((*color)[v] == WHITE) {
-                dfsVisit(W, v, color, l);
+                dfsVisit (W, v, color, l);
             }
         }
     }
