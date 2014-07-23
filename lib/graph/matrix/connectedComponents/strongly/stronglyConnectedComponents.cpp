@@ -75,13 +75,13 @@ set <int> dfsTVisit (matrix W, int u, vector <int> * color) {
         if (u != v && W[u][v] < INFINITE) {
             if ((*color)[v] == WHITE) {
                 set <int> aux = dfsTVisit(W, v, color);
-                result.insert (aux.begin(), aux.end());
+                result.insert(aux.begin(), aux.end());
             }
         }
     }
 
     (*color)[u] = BLACK;
-    result.insert (u);
+    result.insert(u);
     return result;
 }
 
@@ -108,7 +108,7 @@ set < set <int> > stronglyConnectedComponents (matrix W) {
 int main () {
     int n, m;
     while (cin >> n >> m) {
-        matrix W (n, vector <double>(n, INFINITE));
+        matrix W (n, vector <double> (n, INFINITE));
         for (int i = 0; i < m; i++) {
             int u, v;
             cin >> u >> v;
