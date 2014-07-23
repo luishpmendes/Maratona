@@ -18,11 +18,11 @@ typedef struct {
     double w; /* edge weight */
 } Edge;
 
-vector<Edge> prim (vector< list < pair <int, double> > > adj, int r) {
-    vector<Edge> result;
-    vector<bool> Q (adj.size(), true);
-    vector<int> key (adj.size(), INFINITE);
-    vector<int> pi (adj.size(), NIL);
+vector <Edge> prim (vector < list < pair <int, double> > > adj, int r) {
+    vector <Edge> result;
+    vector <bool> Q (adj.size(), true);
+    vector <int> key (adj.size(), INFINITE);
+    vector <int> pi (adj.size(), NIL);
 
     for (int u = 0; u < (int) adj.size(); u++) {
         Q[u] = true;
@@ -41,7 +41,7 @@ vector<Edge> prim (vector< list < pair <int, double> > > adj, int r) {
         }
         Q[u] = false;
 
-        for (list< pair <int, double> >::iterator it = adj[u].begin(); it != adj[u].end(); ++it) {
+        for (list < pair <int, double> >::iterator it = adj[u].begin(); it != adj[u].end(); ++it) {
             int v = (*it).first;
             double w = (*it).second;
             if (Q[v] && w < key[v]) {
@@ -67,7 +67,7 @@ vector<Edge> prim (vector< list < pair <int, double> > > adj, int r) {
 int main () {
     int n, m;
     while (cin >> n >> m) {
-        vector< list < pair <int, double> > > adj (n);
+        vector < list < pair <int, double> > > adj (n);
         for (int i = 0; i < m; i++) {
             int u, v;
             double w;
@@ -77,8 +77,8 @@ int main () {
         }
         int r;
         cin >> r;
-        vector<Edge> A = prim(adj, r);
-        for (vector<Edge>::iterator it = A.begin() ; it != A.end(); ++it) {
+        vector <Edge> A = prim(adj, r);
+        for (vector <Edge>::iterator it = A.begin() ; it != A.end(); ++it) {
             Edge e = *it;
             cout << e.u << " " << e.v << " " << e.w << endl;
         }
