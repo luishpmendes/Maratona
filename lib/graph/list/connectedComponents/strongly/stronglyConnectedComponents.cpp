@@ -23,7 +23,7 @@ void dfsVisit (vector < list < pair <int, double> > > adj, int u, vector <int> *
     for (list < pair <int, double> >::iterator it = adj[u].begin(); it != adj[u].end(); ++it) {
         int v = (*it).first;
         if ((*color)[v] == WHITE) {
-            dfsVisit(adj, v, color, l);
+            dfsVisit (adj, v, color, l);
         }
     }
 
@@ -31,13 +31,13 @@ void dfsVisit (vector < list < pair <int, double> > > adj, int u, vector <int> *
     (*l).push_front(u);
 }
 
-list <int> dfs (vector< list < pair <int, double> > > adj) {
+list <int> dfs (vector < list < pair <int, double> > > adj) {
     list <int> result;
     vector <int> color (adj.size(), WHITE);
 
     for (int u = 0; u < (int) adj.size(); u++) {
         if (color[u] == WHITE) {
-            dfsVisit(adj, u, &color, &result);
+            dfsVisit (adj, u, &color, &result);
         }
     }
 
@@ -69,13 +69,13 @@ set <int> dfsTVisit (vector < list < pair <int, double> > > adj, int u, vector <
     for (list < pair <int, double> >::iterator it = adj[u].begin(); it != adj[u].end(); ++it) {
         int v = (*it).first;
         if ((*color)[v] == WHITE) {
-            set <int> aux = dfsTVisit(adj, v, color);
-            result.insert (aux.begin(), aux.end());
+            set <int> aux = dfsTVisit (adj, v, color);
+            result.insert(aux.begin(), aux.end());
         }
     }
 
     (*color)[u] = BLACK;
-    result.insert (u);
+    result.insert(u);
     return result;
 }
 
@@ -86,7 +86,7 @@ set < set <int> > dfsT (vector < list < pair <int, double> > > adj, vector <int>
     for (int i = 0; i < (int) ts.size(); i++) {
         int u = ts[i];
         if (color[u] == WHITE) {
-            result.insert (dfsTVisit (adj, u, &color));
+            result.insert(dfsTVisit (adj, u, &color));
         }
     }
 
