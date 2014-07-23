@@ -20,9 +20,9 @@
 
 using namespace std;
 
-typedef vector< vector<double> > matrix;
+typedef vector < vector <double> > matrix;
 
-void dfsVisit (matrix W, int u, vector<int> * color, list<int> * l) {
+void dfsVisit (matrix W, int u, vector <int> * color, list <int> * l) {
     (*color)[u] = GRAY;
 
     for (int v = 0; v < (int) W.size(); v++) {
@@ -38,35 +38,35 @@ void dfsVisit (matrix W, int u, vector<int> * color, list<int> * l) {
 }
 
 list<int> dfs (matrix W) {
-    list<int> result;
-    vector<int> color (W.size(), WHITE);
+    list <int> result;
+    vector <int> color (W.size(), WHITE);
 
     for (int u = 0; u < (int) W.size(); u++) {
         if (color[u] == WHITE) {
-            dfsVisit(W, u, &color, &result);
+            dfsVisit (W, u, &color, &result);
         }
     }
     return result;
 }
 
-vector<int> topologicalSort (matrix W) {
-    list<int> l = dfs (W);
-    return vector<int> (l.begin(), l.end());
+vector <int> topologicalSort (matrix W) {
+    list <int> l = dfs (W);
+    return vector <int> (l.begin(), l.end());
 }
 
 int main () {
     int n, m;
     while (cin >> n >> m) {
-        matrix W (n, vector<double>(n, INFINITE));
-        vector<int> pi;
-        vector<int> d;
-        vector<int> f;
+        matrix W (n, vector <double> (n, INFINITE));
+        vector <int> pi;
+        vector <int> d;
+        vector <int> f;
         for (int i = 0; i < m; i++) {
             int u, v;
             cin >> u >> v;
             W[u][v] = 1;
         }
-        vector<int> ts = topologicalSort(W);
+        vector <int> ts = topologicalSort (W);
         for (int i = 0; i < n; i++) {
             cout << ts[i] << endl;
         }
