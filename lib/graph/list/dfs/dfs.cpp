@@ -24,17 +24,17 @@
 
 using namespace std;
 
-void dfsVisit (vector< list < pair <int, double> > > adj, int u, int * time, vector<int> * color, vector<int> * pi, vector<int> * d, vector<int> * f) {
+void dfsVisit (vector < list < pair <int, double> > > adj, int u, int * time, vector <int> * color, vector <int> * pi, vector <int> * d, vector <int> * f) {
     (*time)++;
     (*d)[u] = (*time);
 
     (*color)[u] = GRAY;
 
-    for (list< pair <int, double> >::iterator it = adj[u].begin(); it != adj[u].end(); ++it) {
+    for (list < pair <int, double> >::iterator it = adj[u].begin(); it != adj[u].end(); ++it) {
         int v = (*it).first;
         if ((*color)[v] == WHITE) {
             (*pi)[v] = u;
-            dfsVisit(adj, v, time, color, pi, d, f);
+            dfsVisit (adj, v, time, color, pi, d, f);
         }
     }
 
@@ -43,13 +43,13 @@ void dfsVisit (vector< list < pair <int, double> > > adj, int u, int * time, vec
     (*f)[u] = (*time);
 }
 
-void dfs (vector< list < pair <int, double> > > adj, vector<int> * pi, vector<int> * d, vector<int> * f) {
-    vector<int> color (adj.size(), WHITE);
+void dfs (vector < list < pair <int, double> > > adj, vector <int> * pi, vector <int> * d, vector <int> * f) {
+    vector <int> color (adj.size(), WHITE);
     int time;
 
-    (*pi) = vector<int> (adj.size(), NIL);
-    (*d) = vector<int> (adj.size(), INFINITE);
-    (*f) = vector<int> (adj.size(), INFINITE);
+    (*pi) = vector <int> (adj.size(), NIL);
+    (*d) = vector <int> (adj.size(), INFINITE);
+    (*f) = vector <int> (adj.size(), INFINITE);
 
     for (int u = 0; u < (int) adj.size(); u++) {
         color[u] = WHITE;
@@ -62,7 +62,7 @@ void dfs (vector< list < pair <int, double> > > adj, vector<int> * pi, vector<in
 
     for (int u = 0; u < (int) adj.size(); u++) {
         if (color[u] == WHITE) {
-            dfsVisit(adj, u, &time, &color, pi, d, f);
+            dfsVisit (adj, u, &time, &color, pi, d, f);
         }
     }
 }
@@ -70,16 +70,16 @@ void dfs (vector< list < pair <int, double> > > adj, vector<int> * pi, vector<in
 int main () {
     int n, m;
     while (cin >> n >> m) {
-        vector< list < pair <int, double> > > adj (n);
-        vector<int> pi;
-        vector<int> d;
-        vector<int> f;
+        vector < list < pair <int, double> > > adj (n);
+        vector <int> pi;
+        vector <int> d;
+        vector <int> f;
         for (int i = 0; i < m; i++) {
             int u, v;
             cin >> u >> v;
             adj[u].push_back(make_pair(v, 1));
         }
-        dfs(adj, &pi, &d, &f);
+        dfs (adj, &pi, &d, &f);
         for (int i = 0; i < n; i++) {
             cout << pi[i] << " " << d[i] << " " << f[i] << endl;
         }
