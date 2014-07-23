@@ -13,7 +13,7 @@
 
 using namespace std;
 
-typedef vector< vector<double> > matrix;
+typedef vector < vector<double> > matrix;
 
 typedef struct {
     int u; /* edge source */
@@ -22,13 +22,13 @@ typedef struct {
 } Edge;
 
 struct Sets {
-    vector<int> p;
-    vector<int> rank;
+    vector <int> p;
+    vector <int> rank;
 };
 
 void SETSinit (Sets * S, int n) {
-    S->p = vector<int> (n, NIL);
-    S->rank = vector<int> (n, NIL);
+    S->p = vector <int> (n, NIL);
+    S->rank = vector <int> (n, NIL);
 
     for (int i = 0; i < n; i++) {
         S->p[i] = NIL;
@@ -75,8 +75,8 @@ void SETSunion (Sets * S, int x, int y) {
 }
 
 vector<Edge> minEdges (matrix W) {
-    vector<Edge> result;
-    map<pair<int, int>, double> M;
+    vector <Edge> result;
+    map <pair <int, int>, double> M;
 
     for (int u = 0; u < (int) W.size(); u++) {
         for (int v = 0; v < (int) W[u].size(); v++) {
@@ -95,7 +95,7 @@ vector<Edge> minEdges (matrix W) {
         }
     }
 
-    for (map<pair<int, int>, double>::iterator it = M.begin(); it != M.end(); ++it) {
+    for (map <pair <int, int>, double>::iterator it = M.begin(); it != M.end(); ++it) {
         Edge e;
         e.u = ((*it).first).first;
         e.v = ((*it).first).second;
@@ -110,32 +110,32 @@ bool comparator (Edge a, Edge b) {
     return (a.w < b.w);
 }
 
-vector<Edge> kruskal (matrix W) {
-    vector<Edge> A; /* A ← ∅ */
+vector <Edge> kruskal (matrix W) {
+    vector <Edge> A; /* A ← ∅ */
     Sets S;
 
-    SETSinit(&S, W.size());
+    SETSinit (&S, W.size());
 
     /* for each vertex v ∈ V[G] */
     for (int v = 0; v < (int) W.size(); v++) {
-        SETSmake(&S, v);
+        SETSmake (&S, v);
     }
 
     /* sort the edges of E into nondecreasing order by weight w */
-    vector<Edge> E = minEdges(W);
+    vector <Edge> E = minEdges(W);
 
     sort(E.begin(), E.end(), comparator);
 
     /* for each edge (u, v) ∈ E, taken in nondecreasing order by weight */
-    for (vector<Edge>::iterator it = E.begin(); it != E.end(); ++it) {
+    for (vector <Edge>::iterator it = E.begin(); it != E.end(); ++it) {
         Edge e = *it;
         if (SETSfind(&S, e.u) != SETSfind(&S, e.v)) {
             A.push_back(e);
-            SETSunion(&S, e.u, e.v);
+            SETSunion (&S, e.u, e.v);
         }
     }
 
-    SETSdestroy(&S);
+    SETSdestroy (&S);
 
     return A;
 }
@@ -143,7 +143,7 @@ vector<Edge> kruskal (matrix W) {
 int main () {
     int n, m;
     while (cin >> n >> m) {
-        matrix W (n, vector<double>(n, INFINITE));
+        matrix W (n, vector <double>(n, INFINITE));
         for (int i = 0; i < m; i++) {
             int u, v;
             double w;
@@ -151,8 +151,8 @@ int main () {
             W[u][v] = w;
             W[v][u] = w;
         }
-        vector<Edge> A = kruskal(W);
-        for (vector<Edge>::iterator it = A.begin() ; it != A.end(); ++it) {
+        vector <Edge> A = kruskal(W);
+        for (vector <Edge>::iterator it = A.begin() ; it != A.end(); ++it) {
             Edge e = *it;
             cout << e.u << " " << e.v << " " << e.w << endl;
         }
