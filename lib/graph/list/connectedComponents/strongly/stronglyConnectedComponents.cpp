@@ -17,10 +17,10 @@
 
 using namespace std;
 
-void dfsVisit (vector< list < pair <int, double> > > adj, int u, vector<int> * color, list<int> * l) {
+void dfsVisit (vector < list < pair <int, double> > > adj, int u, vector <int> * color, list <int> * l) {
     (*color)[u] = GRAY;
 
-    for (list< pair <int, double> >::iterator it = adj[u].begin(); it != adj[u].end(); ++it) {
+    for (list < pair <int, double> >::iterator it = adj[u].begin(); it != adj[u].end(); ++it) {
         int v = (*it).first;
         if ((*color)[v] == WHITE) {
             dfsVisit(adj, v, color, l);
@@ -31,9 +31,9 @@ void dfsVisit (vector< list < pair <int, double> > > adj, int u, vector<int> * c
     (*l).push_front(u);
 }
 
-list<int> dfs (vector< list < pair <int, double> > > adj) {
-    list<int> result;
-    vector<int> color (adj.size(), WHITE);
+list <int> dfs (vector< list < pair <int, double> > > adj) {
+    list <int> result;
+    vector <int> color (adj.size(), WHITE);
 
     for (int u = 0; u < (int) adj.size(); u++) {
         if (color[u] == WHITE) {
@@ -44,9 +44,9 @@ list<int> dfs (vector< list < pair <int, double> > > adj) {
     return result;
 }
 
-vector <int> topologicalSort (vector< list < pair <int, double> > > adj) {
+vector <int> topologicalSort (vector < list < pair <int, double> > > adj) {
     list <int> l = dfs (adj);
-    return vector<int> (l.begin(), l.end());
+    return vector <int> (l.begin(), l.end());
 }
 
 vector < list < pair <int, double> > > transpose (vector < list < pair <int, double> > > adj) {
@@ -62,7 +62,7 @@ vector < list < pair <int, double> > > transpose (vector < list < pair <int, dou
     return result;
 }
 
-set <int> dfsTVisit (vector< list < pair <int, double> > > adj, int u, vector<int> * color) {
+set <int> dfsTVisit (vector < list < pair <int, double> > > adj, int u, vector<int> * color) {
     set <int> result;
     (*color)[u] = GRAY;
 
@@ -81,10 +81,10 @@ set <int> dfsTVisit (vector< list < pair <int, double> > > adj, int u, vector<in
 
 set < set <int> > dfsT (vector < list < pair <int, double> > > adj, vector <int> ts) {
     set < set <int> > result;
-    vector<int> color (adj.size(), WHITE);
+    vector <int> color (adj.size(), WHITE);
 
-    for (vector <int>::iterator it = ts.begin(); it != ts.end(); ++it) {
-        int u = (*it);
+    for (int i = 0; i < (int) ts.size(); i++) {
+        int u = ts[i];
         if (color[u] == WHITE) {
             result.insert (dfsTVisit (adj, u, &color));
         }
