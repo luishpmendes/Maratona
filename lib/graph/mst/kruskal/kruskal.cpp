@@ -45,7 +45,7 @@ void SETSmake (Sets * S, int x) {
 
 int SETSfind (Sets * S, int x) {
     if (x != S->p[x]) {
-        S->p[x] = SETSfind(S, S->p[x]);
+        S->p[x] = SETSfind (S, S->p[x]);
     }
     return S->p[x];
 }
@@ -64,7 +64,7 @@ void SETSlink (Sets * S, int x, int y) {
 }
 
 void SETSunion (Sets * S, int x, int y) {
-    SETSlink(S, SETSfind(S, x), SETSfind(S, y));
+    SETSlink(S, SETSfind (S, x), SETSfind (S, y));
 }
 
 bool comparator (Edge a, Edge b) {
@@ -72,14 +72,14 @@ bool comparator (Edge a, Edge b) {
 }
 
 vector <Edge> kruskal (vector <Edge> E, int n) {
-    vector<Edge> A; /* A ← ∅ */
+    vector <Edge> A; /* A ← ∅ */
     Sets S;
 
     SETSinit(&S, n);
 
     /* for each vertex v ∈ V[G] */
     for (int v = 0; v < n; v++) {
-        SETSmake(&S, v);
+        SETSmake (&S, v);
     }
 
     /* sort the edges of E into nondecreasing order by weight w */
@@ -88,9 +88,9 @@ vector <Edge> kruskal (vector <Edge> E, int n) {
     /* for each edge (u, v) ∈ E, taken in nondecreasing order by weight */
     for (vector <Edge>::iterator it = E.begin(); it != E.end(); ++it) {
         Edge e = *it;
-        if (SETSfind(&S, e.u) != SETSfind(&S, e.v)) {
+        if (SETSfind (&S, e.u) != SETSfind (&S, e.v)) {
             A.push_back(e);
-            SETSunion(&S, e.u, e.v);
+            SETSunion (&S, e.u, e.v);
         }
     }
 
@@ -108,7 +108,7 @@ int main () {
             cin >> e.u >> e.v >> e.w;
             E[i] = e;
         }
-        vector <Edge> A = kruskal(E, n);
+        vector <Edge> A = kruskal (E, n);
         for (vector <Edge>::iterator it = A.begin() ; it != A.end(); ++it) {
             Edge e = *it;
             cout << e.u << " " << e.v << " " << e.w << endl;
