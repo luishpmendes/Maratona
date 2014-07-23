@@ -72,7 +72,7 @@ void dfs (matrix W, vector <int> * pi, vector <int> * d, vector <int> * f) {
 int main () {
     int n, m;
     while (cin >> n >> m) {
-        matrix W (n, vector <double>(n, INFINITE));
+        matrix W (n, vector <double> (n, INFINITE));
         vector <int> pi;
         vector <int> d;
         vector <int> f;
