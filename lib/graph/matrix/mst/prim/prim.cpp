@@ -67,7 +67,7 @@ vector <Edge> prim (matrix W, int r) {
 int main () {
     int n, m;
     while (cin >> n >> m) {
-        matrix W (n, vector <double>(n, INFINITE));
+        matrix W (n, vector <double> (n, INFINITE));
         for (int i = 0; i < m; i++) {
             int u, v;
             double w;
@@ -77,9 +77,9 @@ int main () {
         }
         int r;
         cin >> r;
-        vector <Edge> A = prim(W, r);
-        for (vector <Edge>::iterator it = A.begin() ; it != A.end(); ++it) {
-            Edge e = *it;
+        vector <Edge> A = prim (W, r);
+        for (int i = 0; i < (int) A.size(); i++) {
+            Edge e = A[i];
             cout << e.u << " " << e.v << " " << e.w << endl;
         }
     }
