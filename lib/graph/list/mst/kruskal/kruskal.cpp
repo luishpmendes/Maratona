@@ -74,7 +74,7 @@ vector <Edge> minEdges (vector < list < pair <int, double> > > adj) {
     map <pair <int, int>, double> M;
 
     for (int u = 0; u < (int) adj.size(); u++) {
-        for (list< pair <int, double> >::iterator it = adj[u].begin(); it != adj[u].end(); ++it) {
+        for (list < pair <int, double> >::iterator it = adj[u].begin(); it != adj[u].end(); ++it) {
             int v = (*it).first;
             double w = (*it).second;
 
@@ -124,7 +124,7 @@ vector <Edge> kruskal (vector < list < pair <int, double> > > adj) {
     /* for each edge (u, v) ∈ E, taken in nondecreasing order by weight */
     for (vector <Edge>::iterator it = E.begin(); it != E.end(); ++it) {
         Edge e = *it;
-        if (SETSfind(&S, e.u) != SETSfind(&S, e.v)) {
+        if (SETSfind (&S, e.u) != SETSfind (&S, e.v)) {
             A.push_back(e);
             SETSunion (&S, e.u, e.v);
         }
@@ -146,7 +146,7 @@ int main () {
             adj[u].push_back(make_pair(v, w));
             adj[v].push_back(make_pair(u, w));
         }
-        vector <Edge> A = kruskal(adj);
+        vector <Edge> A = kruskal (adj);
         for (vector <Edge>::iterator it = A.begin(); it != A.end(); ++it) {
             Edge e = *it;
             cout << e.u << " " << e.v << " " << e.w << endl;
