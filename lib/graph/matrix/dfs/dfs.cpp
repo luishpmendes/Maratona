@@ -23,9 +23,9 @@
 
 using namespace std;
 
-typedef vector< vector<double> > matrix;
+typedef vector < vector<double> > matrix;
 
-void dfsVisit (matrix W, int u, int * time, vector<int> * color, vector<int> * pi, vector<int> * d, vector<int> * f) {
+void dfsVisit (matrix W, int u, int * time, vector <int> * color, vector <int> * pi, vector <int> * d, vector <int> * f) {
     (*time)++;
     (*d)[u] = (*time);
 
@@ -45,13 +45,13 @@ void dfsVisit (matrix W, int u, int * time, vector<int> * color, vector<int> * p
     (*f)[u] = (*time);
 }
 
-void dfs (matrix W, vector<int> * pi, vector<int> * d, vector<int> * f) {
-    vector<int> color (W.size(), WHITE);
+void dfs (matrix W, vector <int> * pi, vector <int> * d, vector <int> * f) {
+    vector <int> color (W.size(), WHITE);
     int time;
 
-    (*pi) = vector<int> (W.size(), NIL);
-    (*d) = vector<int> (W.size(), INFINITE);
-    (*f) = vector<int> (W.size(), INFINITE);
+    (*pi) = vector <int> (W.size(), NIL);
+    (*d) = vector <int> (W.size(), INFINITE);
+    (*f) = vector <int> (W.size(), INFINITE);
 
     for (int u = 0; u < (int) W.size(); u++) {
         color[u] = WHITE;
@@ -64,7 +64,7 @@ void dfs (matrix W, vector<int> * pi, vector<int> * d, vector<int> * f) {
 
     for (int u = 0; u < (int) W.size(); u++) {
         if (color[u] == WHITE) {
-            dfsVisit(W, u, &time, &color, pi, d, f);
+            dfsVisit (W, u, &time, &color, pi, d, f);
         }
     }
 }
@@ -72,16 +72,16 @@ void dfs (matrix W, vector<int> * pi, vector<int> * d, vector<int> * f) {
 int main () {
     int n, m;
     while (cin >> n >> m) {
-        matrix W (n, vector<double>(n, INFINITE));
-        vector<int> pi;
-        vector<int> d;
-        vector<int> f;
+        matrix W (n, vector <double>(n, INFINITE));
+        vector <int> pi;
+        vector <int> d;
+        vector <int> f;
         for (int i = 0; i < m; i++) {
             int u, v;
             cin >> u >> v;
             W[u][v] = 1;
         }
-        dfs(W, &pi, &d, &f);
+        dfs (W, &pi, &d, &f);
         for (int i = 0; i < n; i++) {
             cout << pi[i] << " " << d[i] << " " << f[i] << endl;
         }
