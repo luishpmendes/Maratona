@@ -15,13 +15,13 @@ typedef struct {
 } Edge;
 
 struct Sets {
-    vector<int> p;
-    vector<int> rank;
+    vector <int> p;
+    vector <int> rank;
 };
 
 void SETSinit (Sets * S, int n) {
-    S->p = vector<int> (n, NIL);
-    S->rank = vector<int> (n, NIL);
+    S->p = vector <int> (n, NIL);
+    S->rank = vector <int> (n, NIL);
 
     for (int i = 0; i < n; i++) {
         S->p[i] = NIL;
@@ -71,7 +71,7 @@ bool comparator (Edge a, Edge b) {
     return (a.w < b.w);
 }
 
-vector<Edge> kruskal (vector<Edge> E, int n) {
+vector <Edge> kruskal (vector <Edge> E, int n) {
     vector<Edge> A; /* A ← ∅ */
     Sets S;
 
@@ -86,7 +86,7 @@ vector<Edge> kruskal (vector<Edge> E, int n) {
     sort(E.begin(), E.end(), comparator);
 
     /* for each edge (u, v) ∈ E, taken in nondecreasing order by weight */
-    for (vector<Edge>::iterator it = E.begin(); it != E.end(); ++it) {
+    for (vector <Edge>::iterator it = E.begin(); it != E.end(); ++it) {
         Edge e = *it;
         if (SETSfind(&S, e.u) != SETSfind(&S, e.v)) {
             A.push_back(e);
@@ -102,14 +102,14 @@ vector<Edge> kruskal (vector<Edge> E, int n) {
 int main () {
     int n, m;
     while (cin >> n >> m) {
-        vector<Edge> E (m);
+        vector <Edge> E (m);
         for (int i = 0; i < m; i++) {
             Edge e;
             cin >> e.u >> e.v >> e.w;
             E[i] = e;
         }
-        vector<Edge> A = kruskal(E, n);
-        for (vector<Edge>::iterator it = A.begin() ; it != A.end(); ++it) {
+        vector <Edge> A = kruskal(E, n);
+        for (vector <Edge>::iterator it = A.begin() ; it != A.end(); ++it) {
             Edge e = *it;
             cout << e.u << " " << e.v << " " << e.w << endl;
         }
