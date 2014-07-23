@@ -24,14 +24,14 @@
 
 using namespace std;
 
-typedef vector < vector<double> > matrix;
+typedef vector < vector <double> > matrix;
 
 void bfs (matrix W, int s, vector <int> * pi, vector <int> * d) {
     vector <int> color (W.size(), WHITE);
     queue <int> Q;
 
-    (*pi) = vector<int> (W.size(), NIL);
-    (*d) = vector<int> (W.size(), INFINITE);
+    (*pi) = vector <int> (W.size(), NIL);
+    (*d) = vector <int> (W.size(), INFINITE);
 
     for (int u = 0; u < (int) W.size(); u++) {
         color[u] = WHITE;
@@ -65,7 +65,7 @@ void bfs (matrix W, int s, vector <int> * pi, vector <int> * d) {
 int main () {
     int n, m;
     while (cin >> n >> m) {
-        matrix W (n, vector <double>(n, INFINITE));
+        matrix W (n, vector <double> (n, INFINITE));
         int s;
         vector <int> pi;
         vector <int> d;
