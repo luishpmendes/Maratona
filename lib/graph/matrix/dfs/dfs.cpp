@@ -23,7 +23,7 @@
 
 using namespace std;
 
-typedef vector < vector<double> > matrix;
+typedef vector < vector <double> > matrix;
 
 void dfsVisit (matrix W, int u, int * time, vector <int> * color, vector <int> * pi, vector <int> * d, vector <int> * f) {
     (*time)++;
