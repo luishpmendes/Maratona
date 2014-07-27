@@ -37,7 +37,7 @@ void dfsVisit (matrix W, int u, vector <int> * color, list <int> * l) {
     (*l).push_front(u);
 }
 
-list<int> dfs (matrix W) {
+list <int> dfs (matrix W) {
     list <int> result;
     vector <int> color (W.size(), WHITE);
 
