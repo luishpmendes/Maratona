@@ -38,7 +38,9 @@ void slowAllPairsShortestPaths (matrix W, matrix * L, matrix * PI) {
         for (int j = 0; j < (int) W.size(); j++) {
             (*L)[i][j] = W[i][j];
             if (i != j) {
-                (*PI)[i][j] = i;
+                if (W[i][j] < INFINITE) {
+                    (*PI)[i][j] = i;
+                }
             } else {
                 (*PI)[i][j] = NIL;
             }
