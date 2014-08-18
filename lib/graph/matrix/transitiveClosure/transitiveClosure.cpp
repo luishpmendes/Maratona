@@ -5,10 +5,6 @@
 #define INFINITE 15 << 25
 #endif
 
-#ifndef NIL
-#define NIL - (15 << 25)
-#endif
-
 using namespace std;
 
 typedef vector < vector <int> > matrix;
