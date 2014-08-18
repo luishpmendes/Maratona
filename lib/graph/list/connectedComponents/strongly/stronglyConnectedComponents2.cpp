@@ -1,6 +1,5 @@
 #include <iostream>
 #include <list>
-#include <set>
 #include <vector>
 
 #ifndef WHITE
@@ -53,40 +52,39 @@ vector < list < pair <int, double> > > transpose (vector < list < pair <int, dou
             result[v].push_back(make_pair(u, 1));
         }
     }
+
     return result;
 }
 
-set <int> dfsTVisit (vector < list < pair <int, double> > > adj, int u, vector <int> * color) {
-    set <int> result;
+void dfsTVisit (vector < list < pair <int, double> > > adj, int u, vector <int> * color, vector <int> * scc, int ncc) {
     (*color)[u] = GRAY;
     for (list < pair <int, double> >::iterator it = adj[u].begin(); it != adj[u].end(); ++it) {
         int v = (*it).first;
         if ((*color)[v] == WHITE) {
-            set <int> aux = dfsTVisit (adj, v, color);
-            result.insert(aux.begin(), aux.end());
+            dfsTVisit (adj, v, color, scc, ncc);
         }
     }
     (*color)[u] = BLACK;
-    result.insert(u);
-    return result;
+    (*scc)[u] = ncc;
 }
 
-set < set <int> > dfsT (vector < list < pair <int, double> > > adj, vector <int> ts) {
-    set < set <int> > result;
+int dfsT (vector < list < pair <int, double> > > adj, vector <int> ts, vector <int> * scc) {
+    int result = 0;
+    *scc = vector <int> (adj.size(), -1);
     vector <int> color (adj.size(), WHITE);
     for (int i = 0; i < (int) ts.size(); i++) {
         int u = ts[i];
         if (color[u] == WHITE) {
-            result.insert(dfsTVisit (adj, u, &color));
+            dfsTVisit (adj, u, &color, scc, result++);
         }
     }
     return result;
 }
 
-set < set <int> > stronglyConnectedComponents (vector < list < pair <int, double> > > adj) {
+int stronglyConnectedComponents (vector < list < pair <int, double> > > adj, vector <int> * scc) {
     vector <int> ts = topologicalSort (adj);
     vector < list < pair <int, double> > > adjT = transpose (adj);
-    return dfsT (adjT, ts);
+    return dfsT (adjT, ts, scc);
 }
 
 int main () {
@@ -98,12 +96,11 @@ int main () {
             cin >> u >> v;
             adj[u].push_back(make_pair(v, 1));
         }
-        set < set <int> > scc = stronglyConnectedComponents (adj);
-        for (set < set <int> >::iterator it = scc.begin(); it != scc.end(); ++it) {
-            for (set <int>::iterator it2 = (*it).begin(); it2 != (*it).end(); ++it2) {
-                cout << *it2 << " ";
-            }
-            cout << endl;
+        vector <int> scc;
+        int ncc = stronglyConnectedComponents (adj, &scc);
+        cout << ncc << endl;
+        for (int u = 0; u < n; u++) {
+            cout << scc[u] << " ";
         }
         cout << endl;
     }

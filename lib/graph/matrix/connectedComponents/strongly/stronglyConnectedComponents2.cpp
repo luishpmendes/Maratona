@@ -1,6 +1,5 @@
 #include <iostream>
 #include <list>
-#include <set>
 #include <vector>
 
 #ifndef INFINITE
@@ -62,38 +61,36 @@ matrix transpose (matrix W) {
     return result;
 }
 
-set <int> dfsTVisit (matrix W, int u, vector <int> * color) {
-    set <int> result;
+void dfsTVisit (matrix W, int u, vector <int> * color, vector <int> * scc, int ncc) {
     (*color)[u] = GRAY;
     for (int v = 0; v < (int) W.size(); v++) {
         if (u != v && W[u][v] < INFINITE) {
             if ((*color)[v] == WHITE) {
-                set <int> aux = dfsTVisit(W, v, color);
-                result.insert(aux.begin(), aux.end());
+                dfsTVisit(W, v, color, scc, ncc);
             }
         }
     }
     (*color)[u] = BLACK;
-    result.insert(u);
-    return result;
+    (*scc)[u] = ncc;
 }
 
-set < set <int> > dfsT (matrix W, vector <int> ts) {
-    set < set <int> > result;
+int dfsT (matrix W, vector <int> ts, vector <int> * scc) {
+    int result = 0;
+    *scc = vector <int> (W.size(), -1);
     vector <int> color (W.size(), WHITE);
     for (int i = 0; i < (int) ts.size(); i++) {
         int u = ts[i];
         if (color[u] == WHITE) {
-            result.insert(dfsTVisit (W, u, &color));
+            dfsTVisit (W, u, &color, scc, result++);
         }
     }
     return result;
 }
 
-set < set <int> > stronglyConnectedComponents (matrix W) {
+int stronglyConnectedComponents (matrix W, vector <int> * scc) {
     vector <int> ts = topologicalSort (W);
     matrix T = transpose (W);
-    return dfsT (T, ts);
+    return dfsT (T, ts, scc);
 }
 
 int main () {
@@ -105,12 +102,11 @@ int main () {
             cin >> u >> v;
             W[u][v] = 1;
         }
-        set < set <int> > scc = stronglyConnectedComponents (W);
-        for (set < set <int> >::iterator it = scc.begin(); it != scc.end(); ++it) {
-            for (set <int>::iterator it2 = (*it).begin(); it2 != (*it).end(); ++it2) {
-                cout << *it2 << " ";
-            }
-            cout << endl;
+        vector <int> scc;
+        int ncc = stronglyConnectedComponents (W, &scc);
+        cout << ncc << endl;
+        for (int u = 0; u < n; u++) {
+            cout << scc[u] << " ";
         }
         cout << endl;
     }
