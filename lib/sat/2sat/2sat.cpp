@@ -2,7 +2,6 @@
 #include <list>
 #include <map>
 #include <string>
-#include <utility>
 #include <vector>
 
 #ifndef INFINITE
