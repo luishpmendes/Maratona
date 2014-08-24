@@ -83,7 +83,7 @@ set < set <int> > dfsT (vector < list < pair <int, double> > > adj, vector <int>
     return result;
 }
 
-set < set <int> > stronglyConnectedComponents (vector < list < pair <int, double> > > adj) {
+set < set <int> > kosaraju (vector < list < pair <int, double> > > adj) {
     vector <int> ts = topologicalSort (adj);
     vector < list < pair <int, double> > > adjT = transpose (adj);
     return dfsT (adjT, ts);
@@ -98,7 +98,7 @@ int main () {
             cin >> u >> v;
             adj[u].push_back(make_pair(v, 1));
         }
-        set < set <int> > scc = stronglyConnectedComponents (adj);
+        set < set <int> > scc = kosaraju (adj);
         for (set < set <int> >::iterator it = scc.begin(); it != scc.end(); ++it) {
             for (set <int>::iterator it2 = (*it).begin(); it2 != (*it).end(); ++it2) {
                 cout << *it2 << " ";

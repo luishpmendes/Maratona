@@ -90,7 +90,7 @@ set < set <int> > dfsT (matrix W, vector <int> ts) {
     return result;
 }
 
-set < set <int> > stronglyConnectedComponents (matrix W) {
+set < set <int> > kosaraju (matrix W) {
     vector <int> ts = topologicalSort (W);
     matrix T = transpose (W);
     return dfsT (T, ts);
@@ -105,7 +105,7 @@ int main () {
             cin >> u >> v;
             W[u][v] = 1;
         }
-        set < set <int> > scc = stronglyConnectedComponents (W);
+        set < set <int> > scc = kosaraju (W);
         for (set < set <int> >::iterator it = scc.begin(); it != scc.end(); ++it) {
             for (set <int>::iterator it2 = (*it).begin(); it2 != (*it).end(); ++it2) {
                 cout << *it2 << " ";
