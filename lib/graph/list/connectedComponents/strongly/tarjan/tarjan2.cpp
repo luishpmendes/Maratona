@@ -19,11 +19,13 @@ void tarjanAux (vector < list < pair <int, double> > > adj, stack <int> * S, vec
         int v = (*it).first;
         if ((*index)[v] < 0) {
             tarjanAux (adj, S, inS, i, index, lowLink, v, scc, ncc);
-            if ((*lowLink)[u] > (*lowLink)[v])
-            (*lowLink)[u] = (*lowLink)[v];
+            if ((*lowLink)[u] > (*lowLink)[v]) {
+                (*lowLink)[u] = (*lowLink)[v];
+            }
         } else if ((*inS)[v]) {
-            if ((*lowLink)[u] > (*lowLink)[v])
-            (*lowLink)[u] = (*lowLink)[v];
+            if ((*lowLink)[u] > (*lowLink)[v]) {
+                (*lowLink)[u] = (*lowLink)[v];
+            }
         }
     }
     if ((*lowLink)[u] == (*index)[u]) {
