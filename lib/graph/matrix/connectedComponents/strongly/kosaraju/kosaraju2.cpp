@@ -87,7 +87,7 @@ int dfsT (matrix W, vector <int> ts, vector <int> * scc) {
     return result;
 }
 
-int stronglyConnectedComponents (matrix W, vector <int> * scc) {
+int kosaraju (matrix W, vector <int> * scc) {
     vector <int> ts = topologicalSort (W);
     matrix T = transpose (W);
     return dfsT (T, ts, scc);
