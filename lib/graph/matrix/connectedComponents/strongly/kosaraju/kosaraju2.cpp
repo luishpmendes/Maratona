@@ -103,7 +103,7 @@ int main () {
             W[u][v] = 1;
         }
         vector <int> scc;
-        int ncc = stronglyConnectedComponents (W, &scc);
+        int ncc = kosaraju (W, &scc);
         cout << ncc << endl;
         for (int u = 0; u < n; u++) {
             cout << scc[u] << " ";
