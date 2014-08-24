@@ -81,7 +81,7 @@ int dfsT (vector < list < pair <int, double> > > adj, vector <int> ts, vector <i
     return result;
 }
 
-int stronglyConnectedComponents (vector < list < pair <int, double> > > adj, vector <int> * scc) {
+int kosaraju (vector < list < pair <int, double> > > adj, vector <int> * scc) {
     vector <int> ts = topologicalSort (adj);
     vector < list < pair <int, double> > > adjT = transpose (adj);
     return dfsT (adjT, ts, scc);
@@ -97,7 +97,7 @@ int main () {
             adj[u].push_back(make_pair(v, 1));
         }
         vector <int> scc;
-        int ncc = stronglyConnectedComponents (adj, &scc);
+        int ncc = kosaraju (adj, &scc);
         cout << ncc << endl;
         for (int u = 0; u < n; u++) {
             cout << scc[u] << " ";
