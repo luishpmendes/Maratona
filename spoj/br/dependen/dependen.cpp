@@ -31,10 +31,9 @@ int main () {
                 dependen[i] += W[i][j];
             }
         }
-        int uMax = 0, max = dependen[0];
+        int uMax = 0;
         for (int u = 1; u < n; u++) {
-            if (max < dependen[u]) {
-                max = dependen[u];
+            if (dependen[uMax] < dependen[u]) {
                 uMax = u;
             }
         }
