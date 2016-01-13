@@ -1,0 +1,12 @@
+product1 = raw_input()
+product1 = product1.split(' ')
+code1 = int(product1[0])
+units1 = int(product1[1])
+price1 = float(product1[2])
+product2 = raw_input()
+product2 = product2.split(' ')
+code2 = int(product2[0])
+units2 = int(product2[1])
+price2 = float(product2[2])
+valueToPay = units1 * price1 + units2 * price2
+print('VALOR A PAGAR: R$ ' + format(valueToPay, '.2f'))
