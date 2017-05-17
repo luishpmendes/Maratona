@@ -1,0 +1,12 @@
+CPPC=g++
+CFLAGS= -Wall
+DEBUGFLAGS= -g -O0 -fno-inline
+
+COMPILER=$(CPPC)
+CFLAGS += $(DEBUGFLAGS)
+
+clean:
+	rm -rf 10550 10550.out
+
+10550: 10550.cpp
+	$(COMPILER) $(CFLAGS) 10550.cpp -o 10550
